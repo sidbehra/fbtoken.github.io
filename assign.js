@@ -5,14 +5,14 @@
    
    
   //function definition for getting facebook profile information
-    function getFacebookInfo(){
+    function getFacebookInfo(){  
 
         $.ajax('https://graph.facebook.com/me?fields=picture.width(250).height(250),id,name,first_name,last_name,birthday,about,hometown,languages,gender,education,work,relationship_status,quotes,family,website,email,cover.width(815).height(320)&access_token='+myFacebookToken,{
 
                 success : function(response){
                     console.log(response);
                     console.log(typeof(response));
-                   $("#myEmail").text(response.email);
+                    $("#myEmail").text(response.email);
                     $("#myProfileId").html('<a target="blank" href="https://facebook.com/'+response.id+'">https://facebook.com/'+response.id+'</a>');
                     $("#myBirthday").text(response.birthday);
                     $("#myHomeTown").text(response.hometown.name);
@@ -22,7 +22,7 @@
                     $("#myLastName").text(response.last_name);
                     $("#myQuotes").text(response.quotes);
                     $("#myCover").attr({"src":response.cover.source,width:600,height:300});
-                $("#myDp").attr({"src":response.picture.data.url,width:300,height:300});
+                    $("#myDp").attr({"src":response.picture.data.url,width:300,height:300});
 
                 },
 
@@ -38,11 +38,13 @@
                         </div>`);
                 }
             }//end argument list 
- );// end ajax call 
- }// end get facebook info
-  getFacebookInfo();//function call
+ 		);// end ajax call 
+ 	}// end get facebook info
+ 
 
-// function for getting facebook feed
+ 	 getFacebookInfo();//function call
+
+		// function for getting facebook feed
       function getFacebookFeed(){
 
         $.ajax('https://graph.facebook.com/me?fields=posts{created_time,type,full_picture,story},picture.width(250).height(250),cover,likes&access_token='+myFacebookToken,{
@@ -50,7 +52,7 @@
                 success : function(response){
                     console.log(response);// response from facebook api
                     console.log(typeof(response));
-                $("#myPost0").text(response.posts.data[0].story);//to get the story text
+                	$("#myPost0").text(response.posts.data[0].story);//to get the story text
                     $("#myPostpic0").attr({"src":response.posts.data[0].full_picture,width:150,height:150});// to get the picture of that post
                      
                     $("#myPost1").text(response.posts.data[1].story);
@@ -67,19 +69,19 @@
                     $("#myPostpic4").attr({"src":response.posts.data[4].full_picture,width:150,height:150});
                                                                                                                                                                                                               
                                                                                            
-                     $("#myPost5").text(response.posts.data[5].story);
+                    $("#myPost5").text(response.posts.data[5].story);
                     $("#myPostpic5").attr({"src":response.posts.data[5].full_picture,width:150,height:150});
                                                                                                        
-                     $("#myPost6").text(response.posts.data[6].story);
+                    $("#myPost6").text(response.posts.data[6].story);
                     $("#myPostpic6").attr({"src":response.posts.data[6].full_picture,width:150,height:150});
                                                                                                        
-                     $("#myPost7").text(response.posts.data[7].story);
+                    $("#myPost7").text(response.posts.data[7].story);
                     $("#myPostpic7").attr({"src":response.posts.data[7].full_picture,width:150,height:150});
                                                                                                        
                     $("#myPost8").text(response.posts.data[8].story);
                     $("#myPostpic8").attr({"src":response.posts.data[8].full_picture,width:150,height:150});
                                                                                                        
-                     $("#myPost9").text(response.posts.data[9].story);
+                    $("#myPost9").text(response.posts.data[9].story);
                     $("#myPostpic9").attr({"src":response.posts.data[9].full_picture,width:150,height:150});
                                                                                                        
                     $("#myPost10").text(response.posts.data[10].story);
@@ -109,9 +111,11 @@
                         </div>`);
                 }
             }//end argument list 
- );// end ajax call 
- }// end get facebook post
-  getFacebookFeed();// function call
+ 		);// end ajax call 
+ 	}// end get facebook post
+  
+
+  	getFacebookFeed();// function call
 
 
 
